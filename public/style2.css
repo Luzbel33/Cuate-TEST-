@@ -231,7 +231,7 @@ body{
     margin-left: 2%;
     margin-bottom: 5%;
     margin-top: 15%;
-    font-family: "Jokerman", sans-serif;
+    font-family: "Jokerman", sans-serif !important;
     text-transform: uppercase;
 }
 
@@ -267,7 +267,7 @@ body{
 .items-box-Wdesc h4, .items-price{
     margin-left: 2.5%;
     margin-top: 2%;
-    font-family: "Stencil", sans-serif;
+    font-family: "Stencil", sans-serif !important;
     font-size: larger;
 } 
 .items-box-Wdesc{
@@ -275,7 +275,6 @@ body{
     flex-direction: column;
     justify-content: space-evenly;
     align-items: flex-start;
-
     height: 220px;
     width: 100%; /* Cambia el valor a 100vw */
     padding: 10px; /* Agregar un poco de espacio interno */
