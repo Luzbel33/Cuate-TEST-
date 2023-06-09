@@ -1,0 +1,498 @@
+*{
+    font-family: Barlow,sans-serif;
+}
+body{
+    background-color: rgb(250, 236, 236);
+}
+
+/** HEADER */
+.header{
+  padding-bottom: 110px;
+}
+.header-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    position: relative;
+    background-color: #00000080;
+}
+.header-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100px;
+    height: 170px;
+    object-fit: cover;
+    object-position: top;
+}
+.bg-img img {
+    position: absolute;
+    object-fit: cover;
+    object-position: top;
+}
+
+/** HEADER CONTACT */
+.social{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end; /*   alinear a la derecha */
+    width: 100%; /*   ocupar todo el ancho */
+    padding: 10px; /* añadir un espacio entre los íconos y el borde derecho */
+    box-sizing: border-box; /*  incluir el padding en el ancho total */
+}
+.d-wpp{
+    display: flex;
+    align-items: center; /* Alinear verticalmente al centro */
+    gap: 10px;
+}
+.wpp img, .ig img{
+    width: 30px;
+    height: 30px;
+}
+
+/** NAV MENU */
+.menu-nav{
+    background-color: rgb(250, 236, 236);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    column-gap: 10px;
+    overflow-x: overlay;
+    width: 100%;
+    margin-top: 120px;
+    margin-bottom: 50px;
+}.menu-nav::-webkit-scrollbar {
+    width: 0.1em; /* Ancho de la barra de desplazamiento */
+   
+    }
+    
+    .menu-nav::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Color del pulgar de la barra de desplazamiento */
+    }
+    
+.menu-nav a, #mail a{
+    text-decoration: none;
+    color: black;
+}
+
+/**INTRO IMGS*/
+.intro {
+    display: flex;
+    position: relative; /* Agrega posición relativa al contenedor */
+    margin-top: 5%;
+}
+
+.intro img {
+    min-width: 200px;
+    width: 100%;
+    position: absolute; /* Agrega posición absoluta a las imágenes */
+}
+
+.intro img:last-child {
+    z-index: 1; /* Establece un valor de z-index más alto para la segunda imagen */
+}
+#rocks{
+    margin-top: 35px;
+}
+#donRamon {
+    width: 250px;
+    animation: slideFromRight 1s ease-in-out; /* Agrega la animación */
+    right: 20px; /* Ajusta la posición inicial hacia la derecha */
+    position: absolute; /* Cambia la posición a absoluta */
+
+}
+
+@keyframes slideFromRight {
+    0% {
+        right: -300px; /* Inicialmente, la imagen está fuera del contenedor hacia la derecha */
+    }
+    100% {
+        right: 20px; /* Al 100% de la animación, la imagen se desplaza hacia la izquierda y se muestra completamente */
+    }
+}
+/**Imagenes de titulos varios[SALSAS-TOTOPOS-BURRITOS]*/
+#title-salsas {
+    display: flex;
+    align-items: center;
+}
+
+#totopos {
+    margin-left: auto;
+    margin-right: -6px;
+}
+
+#title-bebidas {
+    display: flex;
+    align-items: center;
+}
+
+#bebedor {
+    width: 120px;
+    margin-left: 100px;
+
+}
+
+#title-tacos {
+    display: flex;
+    align-items: center;
+}
+#tacosImg {
+    width: 150px;
+    margin-left: 100px;
+
+}
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#bebedor, #tacosImg, #burritosImg {
+    animation: float 3s ease-in-out infinite;
+}
+
+
+#title-burritos {
+    display: flex;
+    align-items: center;
+}
+#burritosImg {
+    width: 135px;
+    margin-left: auto;
+
+}
+
+/** PROMOCIONES */
+.promo-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+  }
+  
+  .promo-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+  }
+  
+  .promo-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  .promo-item h4 {
+    font-size: 16px;
+    margin-bottom: 0px;
+    color: #666;
+  }
+  
+  .promo-item p {
+    text-align: center;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  
+  .promo-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e75022;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 15px;
+  }
+  
+  .promo-price span {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+/** MENU ITEMS */
+.menu-items{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.menu-items h2 {
+    margin-left: 2%;
+    margin-bottom: 5%;
+    margin-top: 15%;
+    font-family: 'jokerman', sans-serif;
+    text-transform: uppercase;
+}
+
+.menu-sect{
+    background-color: rgb(250, 236, 236);
+}
+.products{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.products p {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+.products img {
+    border-radius: 50px;
+    width: 80px;
+    height: 80px;
+}
+.items-section{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2px;
+    gap: 0.5rem;
+}
+
+
+.items-box-Wdesc h4, .items-price{
+    margin-left: 2.5%;
+    margin-top: 2%;
+    font-family: stencil, sans-serif;
+    font-size: larger;
+} 
+.items-box-Wdesc{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+    height: 220px;
+    width: 100%; /* Cambia el valor a 100vw */
+    padding: 10px; /* Agregar un poco de espacio interno */
+    box-sizing: border-box; /* Incluir el padding en el tamaño total */
+}
+.items-desc{
+    max-width: auto;
+    min-height: 50px;
+    height: auto;
+    width: 100%;
+    margin-top: -10%;
+    font-size: 15px;
+    color: rgb(104, 102, 102);
+    padding: 10px;
+    overflow: hidden; /* Oculta el contenido que excede el tamaño del div */
+    word-wrap: break-word;
+}
+
+
+.items-price {
+    display: flex;
+    align-items: center;
+    position: relative; /* Agregar posición relativa al contenedor */
+    margin-top: -10px;
+}
+
+.items-icon {
+    min-width: 150px;
+    width: 100%;
+    height: 50px;
+    position: absolute; /* Agregar posición absoluta */
+}
+
+.items-price span {
+    color:  #f8f3f3;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 15px;
+    z-index: 1;
+    margin-top: -7px;
+}
+
+/* Media queries */
+@media screen and (min-width: 1020px) {
+    .header-box {
+      height: 230px;
+    }
+    .bg-img img{
+        width: 400px;
+    }
+    .wpp img, .ig img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .menu-items h2 {
+      margin-top: 4%;
+      margin-bottom: 2%;
+      margin-left: 2%;
+      font-size: 2rem;
+    }
+    .menu-nav {
+      margin-top: 8%;
+    }
+  
+    .products img {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .items-box-Wdesc {
+      width: 100%;
+      height: auto;
+    }
+
+    .items-box-Wdesc h4, .items-price{
+        margin-left: 0.5%;
+    } 
+    .items-desc {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+    .items-icon {
+      width: 100%;
+      width: 200px;
+      height: 60px;
+      position: absolute;
+    }
+    .items-price span {
+      font-size: 20px;
+    }
+
+    .intro{
+        padding: 50px;;
+    }
+    #rocks {
+        width: 30%;
+    }
+    #donRamon {
+        width: 350px;
+        animation: slideFromRight 1s ease-in-out; /* Agrega la animación */
+        right: 930px; /* Ajusta la posición inicial hacia la derecha */
+        margin-top: 10px;
+    }
+    #totopos {
+        display: none;
+    }
+    #burritosImg{
+        margin-left: 200px;
+    }
+
+
+    
+    @keyframes slideFromRight {
+        0% {
+            right: -300px; /* Inicialmente, la imagen está fuera del contenedor hacia la derecha */
+        }
+        100% {
+            right: 930px; /* Al 100% de la animación, la imagen se desplaza hacia la izquierda y se muestra completamente */
+        }
+    }
+    
+
+  }
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* @media screen and (min-height:250px) and (max-height:414px){
+    .items-section{
+        margin-left: 15%;
+    }
+    .items-desc{
+        padding: 30px;
+        margin-left: -10px;
+    }
+}  */
+
+/* @media screen and (min-width:912px) and (max-width:1368px){
+    #title-bebidas, #title-sandwiches,
+    #title-ejemplo1, #title-ejemplo2, #title-ejemplo3{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+} 
+    .items-box-Wdesc{
+        display: flex;
+        flex-wrap: wrap;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        margin: 12px;
+        width: 600px;
+        height: 140px;
+    }
+    .items-section{
+     display: grid;
+     margin-left: 5%;
+    }
+    .items-desc{
+      margin-right: 50px;
+    }
+    .menu-sect{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 10px;
+        border-radius: 10px;
+        margin-left: 50px;
+        width: 90%;
+    }
+}  */
+@media screen and (min-width: 540px) and (max-width: 540px) { 
+    /* Styles for Surface Duo */
+     .header-box {
+      height: 150px;
+      width: 100%;
+    } 
+  }
+   
+
+ @media screen and (max-width: 280px) { 
+    /* Styles for Galaxy Fold */
+     .header-box{
+        height: 150px;
+        width: 85%;
+    }
+    .bg-img img{
+        width: 280px;
+    }
+} 
+
+ /* @media screen and (min-width: 768px) { 
+    /* Styles for tablets */
+
+     /* .header-box{
+        padding: 30px 50px;
+        height: 150px;
+        width: 90%;
+    }
+
+    .bg-img img {
+     height: 150px;
+    }
+    
+}   */
+
+
