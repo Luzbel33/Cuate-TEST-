@@ -1,5 +1,5 @@
 *{
-    font-family: Barlow,sans-serif;
+    font-family: "Barlow",sans-serif;
 }
 body{
     background-color: rgb(250, 236, 236);
@@ -231,7 +231,7 @@ body{
     margin-left: 2%;
     margin-bottom: 5%;
     margin-top: 15%;
-    font-family: jokerman, sans-serif;
+    font-family: "Jokerman", sans-serif;
     text-transform: uppercase;
 }
 
@@ -267,7 +267,7 @@ body{
 .items-box-Wdesc h4, .items-price{
     margin-left: 2.5%;
     margin-top: 2%;
-    font-family: stencil, sans-serif;
+    font-family: "Stencil", sans-serif;
     font-size: larger;
 } 
 .items-box-Wdesc{
