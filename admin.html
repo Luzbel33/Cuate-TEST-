@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="public/style2.css">
-  <link rel="icon" href="images/icon.png" type="image/x-icon">
+  <link rel="icon" href="public/images/logo.png" type="image/x-icon">
   <title>Panel de Administración</title>
 </head>
 <body>
 
-  <img src="images/bg.png" alt="cuate">
+  <a href="index.html"> <img src="public/images/logo.png" alt="cuate"></a>
   <h1>Panel de Administración</h1>
 
   <div id="loginModal" class="modal">
@@ -26,61 +26,65 @@
 
   <!-- TABLA1 -->
 
-<div id="hide-background">
+<div class="sect" id="hide-background">
+  <section class="form1">
   <h2>BURRITO DEL DÍA</h2>
   <form id="promo-form">
-    <label for="promo-title">Título:</label>
+    <label for="promo-title">Título</label>
     <input type="text" id="promo-title" name="promo-title" required><br>
   
-    <label for="promo-description">Descripción:</label>
+    <label for="promo-description">Descripción</label>
     <textarea id="promo-description" name="promo-description" required></textarea><br>
   
-    <label for="promo-price">Precio:</label>
+    <label for="promo-price">Precio</label>
     <input type="number" id="promo-price" name="promo-price" required><br>
   
     <button class="formBtn" type="submit">Agregar</button>
     </form>
-      
-    <div class="buttons">
-    <div class="showHideSect">
-      <label for="promo-toggle">Mostrar/Ocultar sección Promo:</label>
-      <input type="checkbox" id="promo-toggle">
-    </div>
-    <div>
-      <button id="delete-all-button">Borrar todas</button>
-    </div>
-    </div>
-      <h3>Promociones existentes:</h3>
-      <ul id="promo-list"></ul>
+  </section>
+
+  <div class="buttons">
+      <div class="showHideSect">
+        <label for="promo-toggle">Mostrar/Ocultar sección</label>
+        <input type="checkbox" id="promo-toggle">
+      </div>
+      <div>
+        <button id="delete-all-button">Borrar todas</button>
+      </div>
+   </div>
+    <h2>Promociones existentes:</h2>
+    <ul id="promo-list"></ul>
 </div>
-      
+
 <!-- TABLA2 -->
 
-<div id="hide-background2">
+<div class="sect2" id="hide-background2">
+  <section class="form1">
   <h2>MARTES DEL CUATE 2X1</h2>
   <form id="promo-form2">
-    <label for="promo-title2">Título:</label>
+    <label for="promo-title2">Título</label>
     <input type="text" id="promo-title2" name="promo-title2" required><br>
   
-    <label for="promo-description2">Descripción:</label>
+    <label for="promo-description2">Descripción</label>
     <textarea id="promo-description2" name="promo-description2" required></textarea><br>
   
-    <label for="promo-price2">Precio:</label>
+    <label for="promo-price2"> Precio</label>
     <input type="number" id="promo-price2" name="promo-price2" required><br>
   
     <button class="formBtn2" type="submit">Agregar</button>
     </form>
-    
+  </section>
+
     <div class="buttons2">
       <div class="showHideSect2">
-        <label for="promo-toggle2">Mostrar/Ocultar sección Promo:</label>
+        <label for="promo-toggle2">Mostrar/Ocultar sección</label>
         <input type="checkbox" id="promo-toggle2">
       </div>
       <div>
         <button id="delete-all-button2">Borrar todas</button>
       </div>
   </div>
-  <h3>Promociones existentes:</h3>
+  <h2>Promociones existentes:</h2>
   <ul id="promo-list2"></ul>
 </div>
   
@@ -252,7 +256,7 @@ function showPromotions(promotions) {
     li.appendChild(description);
 
     const price = document.createElement('p');
-    price.textContent = 'Precio: ' + promotion.price;
+    price.textContent = 'Precio:  $ ' + promotion.price;
     price.classList.add('promo-price');
     li.appendChild(price);
 
@@ -452,7 +456,7 @@ async function handleCheckboxChange(promotionId) {
       li2.appendChild(description2);
 
       const price2 = document.createElement('p');
-      price2.textContent = 'Precio: ' + promotion2.price;
+      price2.textContent = 'Precio: $ ' + promotion2.price;
       price2.classList.add('promo-price2');
       li2.appendChild(price2);
 

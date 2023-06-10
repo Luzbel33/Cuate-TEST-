@@ -3,22 +3,27 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #F5F5F5; /* Color de fondo más suave */
+  background-color: #b1a9a9; 
 }
 
 h1 {
   text-align: center;
   font-size: 32px;
-  margin-bottom: 20px;
-  color: #333; /* Color del título principal más suave */
+  color: #252424;
+  margin-bottom: -25px;
 }
 
 h2 {
+  text-align: center;
   font-size: 24px;
   margin-top: 20px;
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
 }
 
@@ -30,7 +35,7 @@ label {
 
 input,
 textarea {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -57,49 +62,80 @@ ul {
   padding: 0;
   list-style: none;
 }
-
-.showHideSect {
+.sect, .sect2{
+  margin-top: 80px;
+}
+.showHideSect, .showHideSect2 {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.showHideSect label {
+.showHideSect label, .showHideSect2 label {
   margin-right: 10px;
 }
 
-.buttons {
+.buttons, .buttons2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-}
+  background-color: #f1e8e8; 
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 
-.promo-item {
+}
+#delete-all-button, #delete-all-button2{
+  background-color: crimson;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+.delete-button, .delete-button2{
+  background-color: crimson;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+.formBtn, .formBtn2{
+  background-color: rgb(91, 209, 91);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
+
+}
+.form1, .form2{
+  background-color: #f1e8e8; 
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+
+}
+.promo-item, .promo-item2 {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 20px;
+  background-color: #f1e8e8; 
   border: 1px solid #ccc;
   padding: 20px;
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.promo-item:hover {
+.promo-item:hover, .promo-item2:hover {
   background-color: #f8f8f8;
   transform: scale(1.05);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.checkbox-container {
+#promo-toggle, #promo-toggle2{
+  margin-left: -20%;
+  margin-top: -5px;
+}
+
+.checkbox-container, .checkbox-container2 {
   display: flex;
   align-items: center;
   margin-bottom: 5px; /* Ajusta el espacio entre los elementos */
 }
 
-.checkbox-container label {
-  margin-left: -20%; /* Ajusta el espacio entre el checkbox y el texto */
-}
+
 
 .modal {
   position: fixed;
@@ -179,10 +215,11 @@ ul {
     font-size: 24px;
   }
 
-  .promo-item {
+  .promo-item, .promo-item2 {
     width: 1700px;
     align-items: center;
     margin: 0 auto;
     margin-bottom: 30px; /* Aumenta el espacio entre los elementos */
+    
   }
 }
