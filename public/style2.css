@@ -1,10 +1,7 @@
-*{
-    font-family: "Barlow",sans-serif;
-}
+
 body{
     background-color: rgb(250, 236, 236);
 }
-
 /** HEADER */
 .header{
   padding-bottom: 110px;
@@ -62,6 +59,7 @@ body{
     width: 100%;
     margin-top: 120px;
     margin-bottom: 50px;
+    font-family: "Barlow",sans-serif;
 }.menu-nav::-webkit-scrollbar {
     width: 0.1em; /* Ancho de la barra de desplazamiento */
    
@@ -95,12 +93,19 @@ body{
 #rocks{
     margin-top: 35px;
 }
+#rocks2{
+    min-width: 200px;
+    width: 100%;
+    margin-top: -50px;
+}
+#rocks3{
+    display: none;
+}
 #donRamon {
     width: 250px;
     animation: slideFromRight 1s ease-in-out; /* Agrega la animación */
-    right: 20px; /* Ajusta la posición inicial hacia la derecha */
+    right: 50px; /* Ajusta la posición inicial hacia la derecha */
     position: absolute; /* Cambia la posición a absoluta */
-
 }
 
 @keyframes slideFromRight {
@@ -108,39 +113,52 @@ body{
         right: -300px; /* Inicialmente, la imagen está fuera del contenedor hacia la derecha */
     }
     100% {
-        right: 20px; /* Al 100% de la animación, la imagen se desplaza hacia la izquierda y se muestra completamente */
+        right: 50px; /* Al 100% de la animación, la imagen se desplaza hacia la izquierda y se muestra completamente */
     }
 }
 /**Imagenes de titulos varios[SALSAS-TOTOPOS-BURRITOS]*/
-#title-salsas {
+#title-salsas, #title-salsasPicantes, #title-bebidas, #title-bebidas {
     display: flex;
     align-items: center;
+}
+#title-salsasPicantes {
+    position: relative;
+    z-index: 1;
+}
+#picante {
+    margin-left: auto;
+    margin-bottom: -80px;
+    width: 120px;
+    position: relative;
+    top: -80px; /* Ajusta la posición vertical de la imagen */
+    z-index: 2;
 }
 
 #totopos {
     margin-left: auto;
     margin-right: -6px;
 }
-
-#title-bebidas {
-    display: flex;
-    align-items: center;
-}
-
 #bebedor {
     width: 120px;
-    margin-left: 100px;
-
+    margin-left: auto;
 }
 
-#title-tacos {
+#tacosImg {
+    width: 150px;
+    margin-left: auto;
+}
+
+#bebedor, #tacosImg, #burritosImg, #picante {
+    animation: float 3s ease-in-out infinite;
+}
+
+#title-burritos {
     display: flex;
     align-items: center;
 }
-#tacosImg {
-    width: 150px;
-    margin-left: 100px;
-
+#burritosImg {
+    width: 135px;
+    margin-left: auto;
 }
 @keyframes float {
     0% {
@@ -154,19 +172,53 @@ body{
     }
 }
 
-#bebedor, #tacosImg, #burritosImg {
-    animation: float 3s ease-in-out infinite;
+#title-quesadillas,#title-salsasPicantes{
+    background-image: url('images/stroke3.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    padding-right: 10px;
 }
-
-
-#title-burritos {
-    display: flex;
-    align-items: center;
+#title-salsasPicantes1{
+    background-image: url('images/suave.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    padding-right: 10px;
+    font-size: 1.3rem;
+    color:aliceblue;
+    background-size: 120px auto;
 }
-#burritosImg {
-    width: 135px;
-    margin-left: auto;
-
+#title-salsasPicantes2{
+    background-image: url('images/fuerte.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    padding-right: 10px;
+    color:aliceblue;
+    font-size: 1.3rem;
+}
+#title-salsasPicantes3{
+    background-image: url('images/dulce.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    padding-right: 10px;
+    font-size: 1.3rem;
+    color:aliceblue;
+    background-size: 200px auto;
+}
+#title-salsas, #title-tacos,
+#title-burritos, #title-fajitas, #title-bebidas {
+    background-image: url('images/stroke4.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    padding-right: 10px;
+    /* background-size: 150% auto; */
+}
+#title-salsas h2 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra del texto */
 }
 
 /** PROMOCIONES */
@@ -174,6 +226,7 @@ body{
     display: flex;
     justify-content: center;
     margin-top: 5%;
+    font-family: "Barlow",sans-serif;
   }
   
   .promo-item {
@@ -228,11 +281,20 @@ body{
     width: 100%;
 }
 .menu-items h2 {
-    margin-left: 2%;
-    margin-bottom: 5%;
-    margin-top: 15%;
+    color: #e9eb6f;
+    margin-top: 50px;
     font-family: "Jokerman", sans-serif !important;
     text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+}
+.menu-items h3{
+    font-family: "Jokerman", sans-serif !important;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
+    margin-left: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+
 }
 
 .menu-sect{
@@ -281,6 +343,7 @@ body{
     box-sizing: border-box; /* Incluir el padding en el tamaño total */
 }
 .items-desc{
+    font-family: "Barlow",sans-serif;
     max-width: auto;
     min-height: 50px;
     height: auto;
@@ -371,12 +434,22 @@ body{
         padding: 50px;;
     }
     #rocks {
-        width: 30%;
+        width: 40%;
+    }
+    #rocks2{
+        display: none;
+    }
+    #rocks3{
+        display: block;
+        width: 40%;
+        position: absolute;
+        right: 0;
+        margin-top: 35px;
     }
     #donRamon {
-        width: 350px;
+        width: 450px;
         animation: slideFromRight 1s ease-in-out; /* Agrega la animación */
-        right: 930px; /* Ajusta la posición inicial hacia la derecha */
+        right: 700px; /* Ajusta la posición inicial hacia la derecha */
         margin-top: 10px;
     }
     #totopos {
@@ -393,7 +466,7 @@ body{
             right: -300px; /* Inicialmente, la imagen está fuera del contenedor hacia la derecha */
         }
         100% {
-            right: 930px; /* Al 100% de la animación, la imagen se desplaza hacia la izquierda y se muestra completamente */
+            right: 700px; /* Al 100% de la animación, la imagen se desplaza hacia la izquierda y se muestra completamente */
         }
     }
     
