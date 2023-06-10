@@ -155,7 +155,7 @@ body{
     margin-left: auto;
 }
 
-#bebedor, #tacosImg, #burritosImg, #picante {
+#bebedor, #tacosImg, #burritosImg, #picante, .promo-item, .promo-item2 {
     animation: float 3s ease-in-out infinite;
 }
 
@@ -235,46 +235,47 @@ body{
     margin-top: 5%;
     font-family: "Barlow",sans-serif;
   }
-  
-  .promo-item {
+
+  .promo-item, .promo-item2 {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    background-color: #f9f9f9;
+    margin-bottom: 5%;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    /* background-color: #f9f9f9; */
   }
   
-  .promo-item h3 {
+  .promo-item h3, .promo-item2 h3 {
     font-size: 18px;
     margin-bottom: 5px;
     color: #333;
   }
   
-  .promo-item h4 {
+  .promo-item h4, .promo-item2 h4 {
     font-size: 16px;
     margin-bottom: 0px;
     color: #666;
   }
   
-  .promo-item p {
+  .promo-item p, .promo-item2 p {
     text-align: center;
     color: #888;
     margin-bottom: 20px;
   }
   
-  .promo-price {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #e75022;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 15px;
-  }
+  .promo-price, .promo-price2 {
+    background-image: url('images/stroke3.png');
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    padding-right: 10px;
+    color: #ffffff; 
+    font-family: "Jokerman";
+    font-size: 1.2rem;
+    }
   
-  .promo-price span {
+  .promo-price span, .promo-price span {
     font-size: 14px;
     font-weight: bold;
   }
