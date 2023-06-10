@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/style2.css">
+    <link rel="stylesheet" href="public/style.css">
     <link rel="icon" href="public/images/logo.png" type="image/x-icon">
     <title>El Cuate-Menú</title>
 </head>
@@ -64,7 +64,7 @@
 
         <section style="display: none;" class="promo-section">
               <div class="promo-item">
-                <h3>Burrito del día</h3>
+                <h3>BURRITO DEL DÍA</h3>
                 <h4 id="promo-title"></h4>
                 <p id="promo-desc"></p>
                 <div class="promo-price">
@@ -74,7 +74,7 @@
         </section>
         <section style="display: none;" class="promo-section2">
             <div class="promo-item2">
-              <h3>Burrito del día</h3>
+              <h3>MARTES DEL CUATE 2X1</h3>
               <h4 id="promo-title2"></h4>
               <p id="promo-desc2"></p>
               <div class="promo-price2">
@@ -687,17 +687,17 @@
     const db = getFirestore();
 
     const promoSection = document.querySelector('.promo-section');
-
-onSnapshot(doc(db, 'admin', 'promo'), (snapshot) => {
-  const showPromo = snapshot.exists() ? snapshot.data().showPromo : false;
-  // Mostrar u ocultar la sección 'promo' en función del estado
-  if (showPromo) {
-    promoSection.style.display = 'block';
-  } else {
-    promoSection.style.display = 'none';
-  }
-});
-
+    
+    onSnapshot(doc(db, 'admin', 'promo'), (snapshot) => {
+        const showPromo = snapshot.exists() ? snapshot.data().showPromo : false;
+        // Mostrar u ocultar la sección 'promo' en función del estado
+        if (showPromo) {
+            promoSection.style.display = 'block';
+        } else {
+            promoSection.style.display = 'none';
+        }
+    });
+    
 const promoTitle = document.querySelector('#promo-title');
 const promoDesc = document.querySelector('#promo-desc');
 const promoPrice = document.querySelector('#promo-price');
@@ -716,6 +716,35 @@ onSnapshot(promotionsRef, (snapshot) => {
   });
 });
 
+const promoSection2 = document.querySelector('.promo-section2');
+    
+    onSnapshot(doc(db, 'admin2', 'promo'), (snapshot) => {
+        const showPromo2 = snapshot.exists() ? snapshot.data().showPromo2 : false;
+        // Mostrar u ocultar la sección 'promo' en función del estado
+        if (showPromo2) {
+            promoSection2.style.display = 'block';
+        } else {
+            promoSection2.style.display = 'none';
+        }
+    });
+    
+const promoTitle2 = document.querySelector('#promo-title2');
+const promoDesc2 = document.querySelector('#promo-desc2');
+const promoPrice2 = document.querySelector('#promo-price2');
+
+// Observa los cambios en la colección 'promotions' en tiempo real
+const promotions2Ref = collection(db, 'promotions2');
+
+onSnapshot(promotions2Ref, (snapshot) => {
+  snapshot.forEach((doc) => {
+    const promoData2 = doc.data();
+    if (promoData2.active === true) {
+      promoTitle2.innerText = promoData2.title;
+      promoDesc2.innerText = promoData2.description;
+      promoPrice2.innerText = '$' + promoData2.price;
+    }
+  });
+});
 
   </script>
 

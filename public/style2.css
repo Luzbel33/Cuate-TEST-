@@ -1,584 +1,188 @@
-@font-face {
-    font-family: 'Jokerman';
-    src: url('fonts/Jokerman.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Boston';
-    src: url('fonts/boston_traffic.ttf') format('truetype');
-}
-body{
-    background-color: rgb(250, 236, 236);
-}
-/** HEADER */
-.header{
-  padding-bottom: 110px;
-}
-.header-box{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    position: relative;
-    background-color: #00000080;
-}
-.header-box{
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    min-height: 100px;
-    height: 170px;
-    object-fit: cover;
-    object-position: top;
-}
-.bg-img img {
-    position: absolute;
-    object-fit: cover;
-    object-position: top;
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #F5F5F5; /* Color de fondo más suave */
 }
 
-/** HEADER CONTACT */
-.social{
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end; /*   alinear a la derecha */
-    width: 100%; /*   ocupar todo el ancho */
-    padding: 10px; /* añadir un espacio entre los íconos y el borde derecho */
-    box-sizing: border-box; /*  incluir el padding en el ancho total */
-}
-.d-wpp{
-    display: flex;
-    align-items: center; /* Alinear verticalmente al centro */
-    gap: 10px;
-}
-.wpp img, .ig img{
-    width: 30px;
-    height: 30px;
+h1 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #333; /* Color del título principal más suave */
 }
 
-/** NAV MENU */
-.menu-nav{
-    background-color: rgb(250, 236, 236);
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 1fr;
-    column-gap: 10px;
-    overflow-x: overlay;
-    width: 100%;
-    margin-top: 120px;
-    margin-bottom: 50px;
-    font-family: "Barlow",sans-serif;
-}.menu-nav::-webkit-scrollbar {
-    width: 0.1em; /* Ancho de la barra de desplazamiento */
-   
-    }
-    
-    .menu-nav::-webkit-scrollbar-thumb {
-    background-color: transparent; /* Color del pulgar de la barra de desplazamiento */
-    }
-    
-.menu-nav a, #mail a{
-    text-decoration: none;
-    color: black;
+h2 {
+  font-size: 24px;
+  margin-top: 20px;
 }
 
-/**INTRO IMGS*/
-.intro {
-    display: flex;
-    position: relative; /* Agrega posición relativa al contenedor */
-    margin-top: 5%;
+form {
+  margin-bottom: 20px;
 }
 
-.intro img {
-    min-width: 200px;
-    width: 100%;
-    position: absolute; /* Agrega posición absoluta a las imágenes */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-.intro img:last-child {
-    z-index: 1; /* Establece un valor de z-index más alto para la segunda imagen */
-}
-#rocks{
-    margin-top: 35px;
-}
-#rocks2{
-    min-width: 200px;
-    width: 100%;
-    margin-top: -50px;
-}
-#rocks3{
-    display: none;
-}
-#donRamon {
-    width: 250px;
-    animation: slideFromRight 1s ease-in-out; /* Agrega la animación */
-    right: 50px; /* Ajusta la posición inicial hacia la derecha */
-    position: absolute; /* Cambia la posición a absoluta */
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
 }
 
-@keyframes slideFromRight {
-    0% {
-        right: -300px; /* Inicialmente, la imagen está fuera del contenedor hacia la derecha */
-    }
-    100% {
-        right: 50px; /* Al 100% de la animación, la imagen se desplaza hacia la izquierda y se muestra completamente */
-    }
-}
-/**Imagenes de titulos varios[SALSAS-TOTOPOS-BURRITOS]*/
-#title-salsas, #title-salsasPicantes, #title-bebidas, #title-bebidas {
-    display: flex;
-    align-items: center;
-}
-#title-salsasPicantes {
-    position: relative;
-    z-index: 1;
-}
-#picante {
-    margin-left: auto;
-    margin-bottom: -100px;
-    width: 120px;
-    position: relative;
-    top: -80px; /* Ajusta la posición vertical de la imagen */
-    z-index: 2;
+button {
+  padding: 12px 24px;
+  background-color: #4285F4;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-#totopos {
-    margin-left: auto;
-    margin-right: -6px;
-}
-#bebedor {
-    width: 120px;
-    margin-left: auto;
+button:hover {
+  background-color: #3367D6;
 }
 
-#tacosImg {
-    width: 150px;
-    margin-left: auto;
+h3 {
+  font-size: 20px;
+  margin-top: 20px;
 }
 
-#bebedor, #tacosImg, #burritosImg, #picante, .promo-item, .promo-item2 {
-    animation: float 3s ease-in-out infinite;
+ul {
+  padding: 0;
+  list-style: none;
 }
 
-#title-burritos {
-    display: flex;
-    align-items: center;
-}
-#burritosImg {
-    width: 135px;
-    margin-left: auto;
-}
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+.showHideSect {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-#title-quesadillas,#title-salsasPicantes{
-    background-image: url('images/stroke3.png');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: cover;
-    padding-right: 10px;
-}
-#title-salsasPicantes1{
-    background-image: url('images/suave.png');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: cover;
-    padding-right: 10px;
-    font-size: 1.3rem;
-    color:aliceblue;
-    background-size: 120px auto;
-}
-#title-salsasPicantes2{
-    background-image: url('images/fuerte.png');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: cover;
-    padding-right: 10px;
-    color:aliceblue;
-    font-size: 1.3rem;
-}
-#title-salsasPicantes3{
-    background-image: url('images/dulce.png');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: cover;
-    padding-right: 10px;
-    font-size: 1.3rem;
-    color:aliceblue;
-    background-size: 200px auto;
-}
-#title-salsas, #title-tacos,
-#title-burritos, #title-fajitas, #title-bebidas {
-    background-image: url('images/stroke4.png');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: cover;
-    padding-right: 10px;
-    /* background-size: 150% auto; */
-}
-#title-salsas h2 {
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra del texto */
+.showHideSect label {
+  margin-right: 10px;
 }
 
-/** PROMOCIONES */
-.promo-section {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    font-family: "Barlow",sans-serif;
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.promo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.promo-item:hover {
+  background-color: #f8f8f8;
+  transform: scale(1.05);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; /* Ajusta el espacio entre los elementos */
+}
+
+.checkbox-container label {
+  margin-left: -20%; /* Ajusta el espacio entre el checkbox y el texto */
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Otros estilos para el formulario y los elementos dentro del modal */
+
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
   }
 
-  .promo-item, .promo-item2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    margin-bottom: 5%;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    /* background-color: #f9f9f9; */
-  }
-  
-  .promo-item h3, .promo-item2 h3 {
+  h2 {
     font-size: 18px;
-    margin-bottom: 5px;
-    color: #333;
   }
-  
-  .promo-item h4, .promo-item2 h4 {
-    font-size: 16px;
-    margin-bottom: 0px;
-    color: #666;
-  }
-  
-  .promo-item p, .promo-item2 p {
-    text-align: center;
-    color: #888;
-    margin-bottom: 20px;
-  }
-  
-  .promo-price, .promo-price2 {
-    background-image: url('images/stroke3.png');
-    background-repeat: no-repeat;
-    background-position: right center;
-    background-size: cover;
-    padding-right: 10px;
-    color: #ffffff; 
-    font-family: "Jokerman";
-    font-size: 1.2rem;
-    }
-  
-  .promo-price span, .promo-price span {
+
+  label,
+  input,
+  textarea,
+  button {
     font-size: 14px;
-    font-weight: bold;
   }
-  
-/** MENU ITEMS */
-.menu-items{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-    width: 100%;
-}
-.menu-items h2 {
-    color: #e9eb6f;
-    margin-top: 50px;
-    font-family: "Jokerman";
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-}
-.menu-items h3{
-    font-family: "Jokerman";
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
-    margin-left: 15px;
-    margin-top: 0;
-    margin-bottom: 0;
 
-}
-
-.menu-sect{
-    background-color: rgb(250, 236, 236);
-}
-.products{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.products p {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-align: center;
-}
-.products img {
-    border-radius: 50px;
-    width: 80px;
-    height: 80px;
-}
-.items-section{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 2px;
-    gap: 0.5rem;
-}
-
-
-.items-box-Wdesc h4{
-    margin-left: 2.5%;
-    margin-top: 2%;
-    font-family: "Boston";
-    font-size: larger;
-} 
-.items-price{
-    margin-left: 2.5%;
-    margin-top: 2%;
-    font-size: larger;
-    font-family: "Jokerman";
-} 
-.items-box-Wdesc{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    height: 220px;
-    width: 100%; /* Cambia el valor a 100vw */
-    padding: 10px; /* Agregar un poco de espacio interno */
-    box-sizing: border-box; /* Incluir el padding en el tamaño total */
-}
-.items-desc{
-    font-family: "Barlow",sans-serif;
-    max-width: auto;
-    min-height: 50px;
-    height: auto;
-    width: 100%;
-    margin-top: -10%;
-    font-size: 15px;
-    color: rgb(104, 102, 102);
-    padding: 10px;
-    overflow: hidden; /* Oculta el contenido que excede el tamaño del div */
-    word-wrap: break-word;
-}
-
-
-.items-price {
-    display: flex;
-    align-items: center;
-    position: relative; /* Agregar posición relativa al contenedor */
-    margin-top: -10px;
-}
-
-.items-icon {
-    min-width: 150px;
-    width: 100%;
-    height: 50px;
-    position: absolute; /* Agregar posición absoluta */
-}
-
-.items-price span {
-    color:  #f8f3f3;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 15px;
-    z-index: 1;
-    margin-top: -7px;
-}
-
-/* Media queries */
-@media screen and (min-width: 1020px) {
-    .header-box {
-      height: 230px;
-    }
-    .bg-img img{
-        width: 400px;
-    }
-    .wpp img, .ig img{
-        width: 50px;
-        height: 50px;
-    }
-
-    .menu-items h2 {
-      margin-top: 4%;
-      margin-bottom: 2%;
-      margin-left: 2%;
-      font-size: 2rem;
-    }
-    .menu-nav {
-      margin-top: 8%;
-    }
-  
-    .products img {
-      width: 120px;
-      height: 120px;
-    }
-  
-    .items-box-Wdesc {
-      width: 100%;
-      height: auto;
-    }
-
-    .items-box-Wdesc h4, .items-price{
-        margin-left: 0.5%;
-    } 
-    .items-desc {
-      margin-top: 10px;
-      font-size: 18px;
-    }
-    .items-icon {
-      width: 100%;
-      width: 200px;
-      height: 60px;
-      position: absolute;
-    }
-    .items-price span {
-      font-size: 20px;
-    }
-
-    .intro{
-        padding: 50px;;
-    }
-    #rocks {
-        width: 40%;
-    }
-    #rocks2{
-        display: none;
-    }
-    #rocks3{
-        display: block;
-        width: 40%;
-        position: absolute;
-        right: 0;
-        margin-top: 35px;
-    }
-    #donRamon {
-        width: 450px;
-        animation: slideFromRight 1s ease-in-out; /* Agrega la animación */
-        right: 700px; /* Ajusta la posición inicial hacia la derecha */
-        margin-top: 10px;
-    }
-    #totopos {
-        display: none;
-    }
-    #burritosImg{
-        margin-left: 200px;
-    }
-
-
-    
-    @keyframes slideFromRight {
-        0% {
-            right: -300px; /* Inicialmente, la imagen está fuera del contenedor hacia la derecha */
-        }
-        100% {
-            right: 700px; /* Al 100% de la animación, la imagen se desplaza hacia la izquierda y se muestra completamente */
-        }
-    }
-    
-
+  button {
+    padding: 8px 16px;
   }
-  
-  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- /* @media screen and (min-height:250px) and (max-height:414px){
-    .items-section{
-        margin-left: 15%;
-    }
-    .items-desc{
-        padding: 30px;
-        margin-left: -10px;
-    }
-}  */
-
-/* @media screen and (min-width:912px) and (max-width:1368px){
-    #title-bebidas, #title-sandwiches,
-    #title-ejemplo1, #title-ejemplo2, #title-ejemplo3{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-} 
-    .items-box-Wdesc{
-        display: flex;
-        flex-wrap: wrap;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-        margin: 12px;
-        width: 600px;
-        height: 140px;
-    }
-    .items-section{
-     display: grid;
-     margin-left: 5%;
-    }
-    .items-desc{
-      margin-right: 50px;
-    }
-    .menu-sect{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-top: 10px;
-        border-radius: 10px;
-        margin-left: 50px;
-        width: 90%;
-    }
-}  */
-@media screen and (min-width: 540px) and (max-width: 540px) { 
-    /* Styles for Surface Duo */
-     .header-box {
-      height: 150px;
-      width: 100%;
-    } 
+  h3 {
+    font-size: 16px;
   }
-   
+}
 
- @media screen and (max-width: 280px) { 
-    /* Styles for Galaxy Fold */
-     .header-box{
-        height: 150px;
-        width: 85%;
-    }
-    .bg-img img{
-        width: 280px;
-    }
-} 
+/* Estilos para pantallas más grandes (escritorio) */
+@media (min-width: 769px) {
+  body {
+    padding: 40px;
+  }
 
- /* @media screen and (min-width: 768px) { 
-    /* Styles for tablets */
+  h1 {
+    font-size: 40px;
+    margin-bottom: 5%;
+  }
 
-     /* .header-box{
-        padding: 30px 50px;
-        height: 150px;
-        width: 90%;
-    }
+  h2 {
+    font-size: 30px;
+  }
 
-    .bg-img img {
-     height: 150px;
-    }
-    
-}   */
+  label,
+  input,
+  textarea,
+  button {
+    font-size: 18px;
+  }
 
+  button {
+    padding: 14px 28px;
+  }
 
+  h3 {
+    font-size: 24px;
+  }
+
+  .promo-item {
+    width: 1700px;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 30px; /* Aumenta el espacio entre los elementos */
+  }
+}

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="public/style2.css">
+  <link rel="icon" href="images/icon.png" type="image/x-icon">
+  <title>Panel de Administración</title>
+</head>
+<body>
+
+  <img src="images/bg.png" alt="cuate">
+  <h1>Panel de Administración</h1>
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <h2>Iniciar sesión</h2>
+      <form id="loginForm">
+        <input type="text" id="emailInput" placeholder="Usuario" required>
+        <input type="password" id="passwordInput" placeholder="Contraseña" required>
+        <button type="submit">Iniciar sesión</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TABLA1 -->
+
+<div id="hide-background">
+  <h2>BURRITO DEL DÍA</h2>
+  <form id="promo-form">
+    <label for="promo-title">Título:</label>
+    <input type="text" id="promo-title" name="promo-title" required><br>
+  
+    <label for="promo-description">Descripción:</label>
+    <textarea id="promo-description" name="promo-description" required></textarea><br>
+  
+    <label for="promo-price">Precio:</label>
+    <input type="number" id="promo-price" name="promo-price" required><br>
+  
+    <button class="formBtn" type="submit">Agregar</button>
+    </form>
+      
+    <div class="buttons">
+    <div class="showHideSect">
+      <label for="promo-toggle">Mostrar/Ocultar sección Promo:</label>
+      <input type="checkbox" id="promo-toggle">
+    </div>
+    <div>
+      <button id="delete-all-button">Borrar todas</button>
+    </div>
+    </div>
+      <h3>Promociones existentes:</h3>
+      <ul id="promo-list"></ul>
+</div>
+      
+<!-- TABLA2 -->
+
+<div id="hide-background2">
+  <h2>MARTES DEL CUATE 2X1</h2>
+  <form id="promo-form2">
+    <label for="promo-title2">Título:</label>
+    <input type="text" id="promo-title2" name="promo-title2" required><br>
+  
+    <label for="promo-description2">Descripción:</label>
+    <textarea id="promo-description2" name="promo-description2" required></textarea><br>
+  
+    <label for="promo-price2">Precio:</label>
+    <input type="number" id="promo-price2" name="promo-price2" required><br>
+  
+    <button class="formBtn2" type="submit">Agregar</button>
+    </form>
+    
+    <div class="buttons2">
+      <div class="showHideSect2">
+        <label for="promo-toggle2">Mostrar/Ocultar sección Promo:</label>
+        <input type="checkbox" id="promo-toggle2">
+      </div>
+      <div>
+        <button id="delete-all-button2">Borrar todas</button>
+      </div>
+  </div>
+  <h3>Promociones existentes:</h3>
+  <ul id="promo-list2"></ul>
+</div>
+  
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCNL0bg8PcRpubdoacoJM0IFWalcE2q3g8",
+      authDomain: "el--cuate.firebaseapp.com",
+      projectId: "el--cuate",
+      storageBucket: "el--cuate.appspot.com",
+      messagingSenderId: "404684690317",
+      appId: "1:404684690317:web:05b07912467573d82b23c4"
+    };
+  
+    import {
+        getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, getDocs, onSnapshot, query, orderBy, limit
+    } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+
+    
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore();
+    
+    const promotionsRef = collection(db, 'promotions');
+
+
+    const promoForm = document.getElementById('promo-form');
+    const promoList = document.getElementById('promo-list');
+    const deleteAllButton = document.getElementById('delete-all-button');
+
+/**---------Login-----------*/
+
+    const loginForm = document.getElementById('loginForm');
+    const loginModal = document.getElementById('loginModal');
+    const hideBackground = document.getElementById('hide-background');
+    const hideBackground2 = document.getElementById('hide-background2');
+
+
+    hideBackground.style.display = 'none'; // Oculta el contenido inicialmente
+    hideBackground2.style.display = 'none'; // Oculta el contenido inicialmente
+
+
+  loginForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById('emailInput').value;
+  const password = document.getElementById('passwordInput').value;
+
+  // Verifica si las credenciales son correctas
+  if (email === 'Picante33' && password === 'picanton99') {
+    // Oculta el modal
+    loginModal.style.display = 'none';
+    // Muestra el contenido oculto
+    hideBackground.style.display = 'block';
+    hideBackground2.style.display = 'block';
+    // Aquí puedes realizar otras acciones después de la autenticación exitosa
+  } else {
+    // Muestra un mensaje de error
+    alert('Credenciales incorrectas');
+  }
+});
+/**---------Login End-----------*/
+
+/**---------Seleccionar Promo-----------*/
+
+    const promoToggle = document.getElementById('promo-toggle');
+
+
+    function handlePromoClick(event) {
+    const promoId = event.currentTarget.getAttribute('data-promo-id');
+    guardarPromoSeleccionada(promoId)
+    .then(() => {
+      console.log('Promoción seleccionada guardada exitosamente');
+    })
+    .catch((error) => {
+      console.error('Error al guardar la promoción seleccionada', error);
+    });
+}
+
+// Función para guardar la promoción seleccionada en Firebase Firestore
+async function guardarPromoSeleccionada(promoId) {
+  try {
+    await setDoc(doc(db, 'admin', 'promoSeleccionada'), { promoId });
+  } catch (error) {
+    throw new Error('Error al guardar la promoción seleccionada en Firebase Firestore');
+}
+}
+
+
+
+// Leer el estado almacenado en Firebase Firestore al cargar la página
+    const adminConfigRef = doc(db, 'admin', 'promo');
+    getDoc(adminConfigRef)
+        .then((docSnapshot) => {
+    if (docSnapshot.exists()) {
+      const showPromo = docSnapshot.data().showPromo;
+        promoToggle.checked = showPromo;
+    }
+  })
+  .catch((error) => {
+    console.error('Error al obtener el estado de la sección Promo', error);
+  });
+
+    promoToggle.addEventListener('change', async () => {
+    const showPromo = promoToggle.checked;
+
+  try {
+    // Guardar el estado de la sección 'promo' en Firebase Firestore
+    await setDoc(adminConfigRef, { showPromo });
+    console.log('Estado de la sección Promo guardado exitosamente');
+  } catch (error) {
+    console.error('Error al guardar el estado de la sección Promo', error);
+  }
+    });
+
+    promoToggle.addEventListener('change', async () => {
+  const showPromo = promoToggle.checked;
+
+  try {
+    // Guardar el estado de la sección 'promo' en Firebase Firestore
+    await setDoc(adminConfigRef, { showPromo });
+    console.log('Estado de la sección Promo guardado exitosamente');
+  } catch (error) {
+    console.error('Error al guardar el estado de la sección Promo', error);
+  }
+});
+
+/**---------Seleccionar Promo End-----------*/
+
+/**---------Mostrar Lista de Promos-----------*/
+
+function showPromotions(promotions) {
+  promoList.innerHTML = '';
+
+  promotions.forEach((promotion) => {
+    const li = document.createElement('li');
+    li.classList.add('promo-item');
+
+    const checkboxContainer = document.createElement('div');
+    checkboxContainer.classList.add('checkbox-container');
+    li.appendChild(checkboxContainer);
+
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = promotion.active;
+    checkbox.classList.add('promo-checkbox');
+    checkbox.id = `promo-checkbox-${promotion.id}`;
+    checkbox.addEventListener('change', () => handleCheckboxChange(promotion.id));
+    checkboxContainer.appendChild(checkbox);
+
+    const checkboxLabel = document.createElement('label');
+    checkboxLabel.textContent = 'Elegir promo';
+    checkboxLabel.htmlFor = `promo-checkbox-${promotion.id}`;
+    checkboxContainer.appendChild(checkboxLabel);
+
+    const title = document.createElement('h4');
+    title.textContent = promotion.title;
+    title.classList.add('promo-title');
+    li.appendChild(title);
+
+    const description = document.createElement('p');
+    description.textContent = promotion.description;
+    description.classList.add('promo-description');
+    li.appendChild(description);
+
+    const price = document.createElement('p');
+    price.textContent = 'Precio: ' + promotion.price;
+    price.classList.add('promo-price');
+    li.appendChild(price);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Eliminar';
+    deleteButton.classList.add('delete-button');
+    deleteButton.addEventListener('click', () => deletePromotion(promotion.id));
+    li.appendChild(deleteButton);
+
+    promoList.appendChild(li);
+  });
+}
+
+/**---------Mostrar Lista de Promos End-----------*/
+
+/**---------Mostrar/Ocultar seccion-----------*/
+
+async function handleCheckboxChange(promotionId) {
+  try {
+    // Obtén la promoción seleccionada
+    const promotionRef = doc(promotionsRef, promotionId);
+    const promotionDoc = await getDoc(promotionRef);
+
+    // Obtén todas las promociones
+    const snapshot = await getDocs(query(promotionsRef));
+
+    // Actualiza el estado del checkbox en la base de datos
+    const updatePromises = snapshot.docs.map((doc) => {
+      const isActive = doc.id === promotionId; // Comprueba si es la promoción seleccionada
+      return updateDoc(doc.ref, { active: isActive });
+    });
+    await Promise.all(updatePromises);
+
+    console.log('Estado del checkbox actualizado exitosamente');
+  } catch (error) {
+    console.error('Error al actualizar el estado del checkbox', error);
+  }
+}
+/**---------Mostrar/Ocultar Seccion End-----------*/
+
+/**---------Ordenar por timestamp----------*/
+
+    onSnapshot(query(promotionsRef, orderBy('timestamp')), (snapshot) => {
+      const promotions = [];
+      snapshot.forEach((doc) => {
+        promotions.push({ id: doc.id, ...doc.data() });
+      });
+      showPromotions(promotions);
+    });
+/**---------Ordenar por timestamp End----------*/
+
+/**---------Agregar Promo a la tabla----------*/
+    promoForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // Obtener los valores del formulario
+      const title = document.getElementById('promo-title').value;
+      const description = document.getElementById('promo-description').value;
+      const price = document.getElementById('promo-price').value;
+      const timestamp = new Date();
+
+      try {
+        // Agregar la promoción a Firebase Firestore
+        await addDoc(promotionsRef, {
+          title,
+          description,
+          price,
+          timestamp,
+        });
+
+        // Limpiar el formulario
+        promoForm.reset();
+        console.log('Promoción agregada exitosamente');
+      } catch (error) {
+        console.error('Error al agregar la promoción', error);
+      }
+    });
+/**---------Agregar Promo a la tabla End----------*/
+
+/**---------Eliminar Promo a la tabla----------*/
+    async function deletePromotion(promotionId) {
+      try {
+        // Eliminar la promoción de Firebase Firestore
+        await deleteDoc(doc(db, 'promotions', promotionId));
+        console.log('Promoción eliminada exitosamente');
+      } catch (error) {
+        console.error('Error al eliminar la promoción', error);
+      }
+    }
+
+    deleteAllButton.addEventListener('click', async () => {
+  try {
+    // Obtener todas las promociones
+    const snapshot = await getDocs(query(promotionsRef));
+
+    // Eliminar cada promoción
+    const deletionPromises = snapshot.docs.map((doc) => deleteDoc(doc.ref));
+    await Promise.all(deletionPromises);
+
+    console.log('Todas las promociones fueron eliminadas exitosamente');
+  } catch (error) {
+    console.error('Error al eliminar todas las promociones', error);
+  }
+});
+/**---------Eliminar Promo a la tabla End----------*/
+
+
+
+  /**--------------TABLA 2----------------*/
+  const promotions2Ref = collection(db, 'promotions2');
+
+  const promoForm2 = document.getElementById('promo-form2');
+  const promoList2 = document.getElementById('promo-list2');
+  const deleteAllButton2 = document.getElementById('delete-all-button2');
+
+  /**---------Seleccionar Promo-----------*/
+  const promoToggle2 = document.getElementById('promo-toggle2');
+
+  function handlePromoClick2(event) {
+    const promoId2 = event.currentTarget.getAttribute('data-promo-id2');
+    guardarPromoSeleccionada2(promoId2)
+      .then(() => {
+        console.log('Promoción seleccionada guardada exitosamente');
+      })
+      .catch((error) => {
+        console.error('Error al guardar la promoción seleccionada', error);
+      });
+  }
+
+  // Función para guardar la promoción seleccionada en Firebase Firestore
+  async function guardarPromoSeleccionada2(promoId2) {
+    try {
+      await setDoc(doc(db, 'admin2', 'promoSeleccionada'), { promoId2 });
+    } catch (error) {
+      throw new Error('Error al guardar la promoción seleccionada en Firebase Firestore');
+    }
+  }
+
+  // Leer el estado almacenado en Firebase Firestore al cargar la página
+  const adminConfigRef2 = doc(db, 'admin2', 'promo');
+  getDoc(adminConfigRef2)
+    .then((docSnapshot) => {
+      if (docSnapshot.exists()) {
+        const showPromo2 = docSnapshot.data().showPromo2;
+        promoToggle2.checked = showPromo2;
+      }
+    })
+    .catch((error) => {
+      console.error('Error al obtener el estado de la sección Promo', error);
+    });
+
+  promoToggle2.addEventListener('change', async () => {
+    const showPromo2 = promoToggle2.checked;
+
+    try {
+      // Guardar el estado de la sección 'promo' en Firebase Firestore
+      await setDoc(adminConfigRef2, { showPromo2 });
+      console.log('Estado de la sección Promo guardado exitosamente');
+    } catch (error) {
+      console.error('Error al guardar el estado de la sección Promo', error);
+    }
+  });
+
+  /**---------Mostrar Lista de Promos-----------*/
+  function showPromotions2(promotions2) {
+    promoList2.innerHTML = '';
+
+    promotions2.forEach((promotion2) => {
+      const li2 = document.createElement('li');
+      li2.classList.add('promo-item2');
+
+      const checkboxContainer2 = document.createElement('div');
+      checkboxContainer2.classList.add('checkbox-container2');
+      li2.appendChild(checkboxContainer2);
+
+      const checkbox2 = document.createElement('input');
+      checkbox2.type = 'checkbox';
+      checkbox2.checked = promotion2.active;
+      checkbox2.classList.add('promo-checkbox2');
+      checkbox2.id = `promo-checkbox2-${promotion2.id}`;
+      checkbox2.addEventListener('change', () => handleCheckboxChange2(promotion2.id));
+      checkboxContainer2.appendChild(checkbox2);
+
+      const checkboxLabel2 = document.createElement('label');
+      checkboxLabel2.textContent = 'Elegir promo';
+      checkboxLabel2.htmlFor = `promo-checkbox2-${promotion2.id}`;
+      checkboxContainer2.appendChild(checkboxLabel2);
+
+      const title2 = document.createElement('h4');
+      title2.textContent = promotion2.title;
+      title2.classList.add('promo-title2');
+      li2.appendChild(title2);
+
+      const description2 = document.createElement('p');
+      description2.textContent = promotion2.description;
+      description2.classList.add('promo-description2');
+      li2.appendChild(description2);
+
+      const price2 = document.createElement('p');
+      price2.textContent = 'Precio: ' + promotion2.price;
+      price2.classList.add('promo-price2');
+      li2.appendChild(price2);
+
+      const deleteButton2 = document.createElement('button');
+      deleteButton2.textContent = 'Eliminar';
+      deleteButton2.classList.add('delete-button2');
+      deleteButton2.addEventListener('click', () => deletePromotion2(promotion2.id));
+      li2.appendChild(deleteButton2);
+
+      promoList2.appendChild(li2);
+    });
+  }
+  /**---------Mostrar Lista de Promos End-----------*/
+
+  /**---------Mostrar/Ocultar seccion-----------*/
+  async function handleCheckboxChange2(promotionId2) {
+    try {
+      // Obtén la promoción seleccionada
+      const promotion2Ref = doc(promotions2Ref, promotionId2);
+      const promotionDoc2 = await getDoc(promotion2Ref);
+
+      // Obtén todas las promociones
+      const snapshot2 = await getDocs(query(promotions2Ref));
+
+      // Actualiza el estado del checkbox en la base de datos
+      const updatePromises2 = snapshot2.docs.map((doc) => {
+        const isActive2 = doc.id === promotionId2; // Comprueba si es la promoción seleccionada
+        return updateDoc(doc.ref, { active: isActive2 });
+      });
+      await Promise.all(updatePromises2);
+
+      console.log('Estado del checkbox actualizado exitosamente');
+    } catch (error) {
+      console.error('Error al actualizar el estado del checkbox', error);
+    }
+  }
+  /**---------Mostrar/Ocultar Seccion End-----------*/
+
+  /**---------Ordenar por timestamp----------*/
+  onSnapshot(query(promotions2Ref, orderBy('timestamp')), (snapshot) => {
+    const promotions2 = [];
+    snapshot.forEach((doc) => {
+      promotions2.push({ id: doc.id, ...doc.data() });
+    });
+    showPromotions2(promotions2);
+  });
+  /**---------Ordenar por timestamp End----------*/
+
+  /**---------Agregar Promo a la tabla----------*/
+  promoForm2.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // Obtener los valores del formulario
+    const title2 = document.getElementById('promo-title2').value;
+    const description2 = document.getElementById('promo-description2').value;
+    const price2 = document.getElementById('promo-price2').value;
+    const timestamp2 = new Date();
+
+    try {
+      // Agregar la promoción a Firebase Firestore
+      await addDoc(promotions2Ref, {
+        title: title2,
+        description: description2,
+        price: price2,
+        timestamp: timestamp2,
+      });
+
+      // Limpiar el formulario
+      promoForm2.reset();
+      console.log('Promoción agregada exitosamente');
+    } catch (error) {
+      console.error('Error al agregar la promoción', error);
+    }
+  });
+  /**---------Agregar Promo a la tabla End----------*/
+
+  /**---------Eliminar Promo a la tabla----------*/
+  async function deletePromotion2(promotionId2) {
+    try {
+      // Eliminar la promoción de Firebase Firestore
+      await deleteDoc(doc(db, 'promotions2', promotionId2));
+      console.log('Promoción eliminada exitosamente');
+    } catch (error) {
+      console.error('Error al eliminar la promoción', error);
+    }
+  }
+
+  deleteAllButton2.addEventListener('click', async () => {
+    try {
+      // Obtener todas las promociones
+      const snapshot2 = await getDocs(query(promotions2Ref));
+
+      // Eliminar cada promoción
+      const deletionPromises2 = snapshot2.docs.map((doc) => deleteDoc(doc.ref));
+      await Promise.all(deletionPromises2);
+
+      console.log('Todas las promociones fueron eliminadas exitosamente');
+    } catch (error) {
+      console.error('Error al eliminar todas las promociones', error);
+    }
+  });
+
+  </script>
+</body>
+</html>
+
