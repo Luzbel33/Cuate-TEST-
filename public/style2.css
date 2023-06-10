@@ -127,7 +127,7 @@ body{
 }
 #picante {
     margin-left: auto;
-    margin-bottom: -80px;
+    margin-bottom: -100px;
     width: 120px;
     position: relative;
     top: -80px; /* Ajusta la posición vertical de la imagen */
@@ -283,12 +283,12 @@ body{
 .menu-items h2 {
     color: #e9eb6f;
     margin-top: 50px;
-    font-family: "Jokerman", sans-serif !important;
+    font-family: "Jokerman", fantasy;
     text-transform: uppercase;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
 }
 .menu-items h3{
-    font-family: "Jokerman", sans-serif !important;
+    font-family: "Jokerman", fantasy;
     text-transform: uppercase;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 1);
     margin-left: 15px;
@@ -329,7 +329,7 @@ body{
 .items-box-Wdesc h4, .items-price{
     margin-left: 2.5%;
     margin-top: 2%;
-    font-family: "Stencil", sans-serif !important;
+    font-family: "Stencil", fantasy;
     font-size: larger;
 } 
 .items-box-Wdesc{
