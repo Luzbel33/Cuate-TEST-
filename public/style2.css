@@ -2,6 +2,10 @@
     font-family: 'Jokerman';
     src: url('fonts/Jokerman.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'Boston';
+    src: url('fonts/boston_traffic.ttf') format('truetype');
+}
 body{
     background-color: rgb(250, 236, 236);
 }
@@ -329,11 +333,17 @@ body{
 }
 
 
-.items-box-Wdesc h4, .items-price{
+.items-box-Wdesc h4{
     margin-left: 2.5%;
     margin-top: 2%;
-    font-family: "Stencil", sans-serif;
+    font-family: "Boston";
     font-size: larger;
+} 
+.items-price{
+    margin-left: 2.5%;
+    margin-top: 2%;
+    font-size: larger;
+    font-family: "Jokerman";
 } 
 .items-box-Wdesc{
     display: flex;
