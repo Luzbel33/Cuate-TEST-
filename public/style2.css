@@ -332,7 +332,7 @@ body{
 .items-box-Wdesc h4, .items-price{
     margin-left: 2.5%;
     margin-top: 2%;
-    font-family: "Stencil", fantasy;
+    font-family: "Stencil", sans-serif;
     font-size: larger;
 } 
 .items-box-Wdesc{
