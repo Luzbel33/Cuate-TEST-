@@ -88,7 +88,11 @@ ul {
 #delete-all-button, #delete-all-button2{
   background-color: crimson;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-
+}
+.edit-button,.edit-button2{
+  background-color: rgb(224, 142, 18);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
 }
 .delete-button, .delete-button2{
   background-color: crimson;
@@ -116,6 +120,7 @@ ul {
   padding: 20px;
   transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+
 }
 
 .promo-item:hover, .promo-item2:hover {
@@ -183,6 +188,9 @@ ul {
   h3 {
     font-size: 16px;
   }
+  .edit-button,.edit-button2{
+    min-width: 85px;
+  }
 }
 
 /* Estilos para pantallas más grandes (escritorio) */
@@ -216,10 +224,9 @@ ul {
   }
 
   .promo-item, .promo-item2 {
-    width: 1700px;
+    /* width: 1700px; */
     align-items: center;
     margin: 0 auto;
     margin-bottom: 30px; /* Aumenta el espacio entre los elementos */
-    
   }
 }
